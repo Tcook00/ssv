@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search & Seizure Validator</title>
+</head>
+<body>
+    <h2>Search & Seizure Validator</h2>
+    <form method="POST">
+        <textarea name="report_text" rows="10" cols="50" placeholder="Paste your police report here..."></textarea><br>
+        <button type="submit">Validate</button>
+    </form>
+    {% if result %}
+    <h3>Validation Result:</h3>
+    <p>{{ result }}</p>
+    {% endif %}
+</body>
+</html>
