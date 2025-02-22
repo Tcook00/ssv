@@ -1,5 +1,5 @@
 import re
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
@@ -37,14 +37,6 @@ def analyze_search_and_seizure(report_text):
     # Provide feedback on what was found
     valid_justifications = [key.replace('_', ' ').title() for key, found in findings.items() if found]
     return f"Search appears justified based on: {', '.join(valid_justifications)}. Ensure all necessary details, including probable cause, are included."
-
-@app.route('/', methods=['GET', 'POST'])
-def index():
-    result = None
-    if request.method == 'POST':
-        report_text = request.form['report_text']
-        result = analyze_search_and_seizure(report_text)
-    return render_template('index.html', result=result)
 
 @app.route('/validate', methods=['POST'])
 def validate_report():
